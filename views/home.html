@@ -1,0 +1,47 @@
+<header>
+	<nav class="navbar navbar-default  navbar-fixed-top">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#/">
+					<img src="./views/assets/okta_logo.png" height="20px" width="70px" />
+				</a>
+			</div>
+			<!-- Right Justified Nav -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li> <a href="#/" style="font-size:20px;">Home</a></li>
+					<li ng-if="!session">
+						<td style="padding:30px;"> <a href="#/login" ng-click="signout()"
+								style="font-size:20px;">Login</a>
+					</li>
+					<li ng-if="session">
+						<td style="padding:30px;"> <a href="#/login" ng-click="signout()" style="font-size:20px;">Sign
+								Out</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+</header>
+
+<div class="row" ng-if="auth">
+
+	<div class="col-md-1"></div>
+	<div class="col-md-9">
+		<h3 id="userResponseAnchor">
+			User Response
+			<span class="label label-primary pull-right" ng-if="session">Active Session</span>
+			<span class="label label-warning pull-right" ng-if="!session">Closed Session</span>
+		</h3>
+		<h1>Welcome, {{user.firstName}} {{user.lastName}}!</h1>
+		<h5>Your Email is: {{user.login}}</h5>
+
+	</div>
+</div>
+
+
+<div ng-if="!auth">
+	<br />
+	<h3> Please <a href="#/login"> Sign in to continue</a></h3>
+</div>
